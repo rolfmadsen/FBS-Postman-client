@@ -13,6 +13,21 @@ Hensigten med dette Github repository er at:
 
 Målgruppen er webmastere der ønsker at se de data FBS udleverer til f. eks. DDB CMS.
 
+FBS Postman collection giver mulighed for at hente følgende oplysninger fra FBS:
+
+* Lånerstatus
+*.. Patron - getLoans -> Hjemlån (DDB CMS: /user/me/status)
+*.. Patron - getReservations -> Reserveringer (DDB CMS: /user/me/status/reservations) 
+*.. Patron - getFees -> Mellemværender (DDB CMS: /user/me/status/debts)
+*.. Patron - getBookingLoans
+*.. Patron - getBookings
+* Biblioteksoplysninger
+*.. Library - getRootGroup
+*.. Library - getBranches -> Biblioteksfilial
+*.. Library - getDepartments -> Afdeling
+*.. Library - getLocations -> Opstilling
+*.. Library - getSublocations -> Underopstilling
+
 ## Installér Postman klienten
 
 Postman er gratis værktøj med en grafisk brugergrænseflade, der kan installeres på Windows, Mac og Linux computere, og den egner sig derfor godt til brugere, som undertegnede, der ikke færdes hjemmevant i en kommandoprompt og ikke kan programmere op imod et API.
