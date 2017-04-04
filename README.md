@@ -40,7 +40,7 @@ Postman kan downloades fra https://www.getpostman.com/ og installeres som ethver
 
 Samlingen består primært af to POST kald der autentificerer henholdsvis "Postman klienten" og Låneren (Patron) og en række GET kald der henter forskellige typer af information ud af systemet. 
 
-1. Download [FBS Postman collection](INDSÆT LINK TIL FILEN), som er delt i dette Github repository, og gem filen på dit skrivebord
+1. Download [FBS Postman collection](https://raw.githubusercontent.com/rolfmadsen/FBS-Postman-client/master/FBS.postman_collection.json), som er delt i dette Github repository, og gem filen på dit skrivebord
 2. Åben Postman
 3. Tryk på "Import" knappen i den øverste grå menu linje og tryk på "Choose Files" knappen i det Import vindue der dukker op midt på skærmen.
 4. Dobbelt-klik på "FBS postman collection" filen på dit skrivebord for at importere den.
