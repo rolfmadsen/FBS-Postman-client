@@ -1,0 +1,344 @@
+{
+	"variables": [],
+	"info": {
+		"name": "FBS (Cicero by Systematic)",
+		"_postman_id": "3e7a57c4-5f68-86d5-47c5-d9be97621403",
+		"description": "http://fbsudrulning.dk/wp-content/uploads/IFS0002-CMS-Integration-Services-2.pdf",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Client authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"sessionKey\", data.sessionKey);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{host}}{{agencyId}}/authentication/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"{{password}}\",\r\n    \"username\": \"{{username}}\"\r\n}"
+				},
+				"description": "Authenticate the Postman client."
+			},
+			"response": []
+		},
+		{
+			"name": "Patron authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"patronId\", data.patron.patronId);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{host}}{{agencyId}}/patrons/authenticate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-session",
+						"value": "{{sessionKey}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"libraryCardNumber\": \"{{libraryCardNumber}}\",\r\n    \"pincode\": \"{{pincode}}\"    \r\n}"
+				},
+				"description": "Authenticate the patron\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Patron - getLoans",
+			"request": {
+				"url": "{{host}}{{agencyId}}/patrons/{{patronId}}/loans",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-session",
+						"value": "{{sessionKey}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Retreive the patrons loans."
+			},
+			"response": []
+		},
+		{
+			"name": "Patron - getReservations",
+			"request": {
+				"url": "{{host}}{{agencyId}}/patrons/{{patronId}}/reservations",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-session",
+						"value": "{{sessionKey}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Retreive the patrons reservations\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Patron - getFees",
+			"request": {
+				"url": "{{host}}{{agencyId}}/patron/{{patronId}}/fees?includepaid&includenonpayable",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-session",
+						"value": "{{sessionKey}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "List of fees in FBS for the patron with all available information about the fee.\n\nParameters:\n\nagencyid: ISIL of the agency (e.g. DK-761500) \n\npatronid: the patron that owns the fees \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Catalog - getAvailability",
+			"request": {
+				"url": "{{host}}{{agencyId}}/catalog/availability?recordid={{HarryPotterOgDeVisesStenFAUST}}&recordid={{HarryPotterOgFønixOrdenenFAUST}}&recordid={{AltForDamerneFAUST}}&recordid={{HongKongFAUST}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-session",
+						"value": "{{sessionKey}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Get placement holdings for bibliographical records."
+			},
+			"response": []
+		},
+		{
+			"name": "Catalog - getHoldings",
+			"request": {
+				"url": "{{host}}{{agencyId}}/catalog/holdings?recordid={{HarryPotterOgDeVisesStenFAUST}}&recordid={{HarryPotterOgFønixOrdenenFAUST}}&recordid={{AltForDamerneFAUST}}&recordid={{HongKongFAUST}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-session",
+						"value": "{{sessionKey}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Get availability for bibliographical records."
+			},
+			"response": []
+		},
+		{
+			"name": "Patron - getBookingLoans",
+			"request": {
+				"url": "{{host}}{{agencyId}}/patrons/{{patronId}}/loans/{{bookingId}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-session",
+						"value": "{{sessionKey}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Retrieves material loans for the given booking ID.\n\nParameters:\n\nagencyid: ISIL of the agency (e.g. DK-761500) \n\npatronid: the ID of the patron that owns the bookings \n\nbookingid:  \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Patron - getBookings",
+			"request": {
+				"url": "{{host}}{{agencyId}}/patrons/{{patronId}}/bookings",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-session",
+						"value": "{{sessionKey}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Retrieve all bookings made by the patron.\n\nParameters:\n\nagencyid: ISIL of the agency (e.g. DK-761500) \n\npatronid: the ID of the patron that owns the bookings \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Library - getRootGroup",
+			"request": {
+				"url": "{{host}}{{agencyId}}/patrongroups",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-session",
+						"value": "{{sessionKey}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Returns the root group of a specific agency.\n\nParameters:\n\nagencyid: ISIL of the agency (e.g. DK-761500) \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Library - getBranches",
+			"request": {
+				"url": "{{host}}{{agencyId}}/branches",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-session",
+						"value": "{{sessionKey}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Get branches for an agency.\n\nParameters:\n\nagencyid: ISIL of the agency (e.g. DK-761500) \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Library - getDepartments",
+			"request": {
+				"url": "{{host}}{{agencyId}}/departments",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-session",
+						"value": "{{sessionKey}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Get translations from department identifiers to displayable text.\n\nParameters:\n\nagencyid: ISIL of the agency (e.g. DK-761500) \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Library - getLocations",
+			"request": {
+				"url": "{{host}}{{agencyId}}/locations",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-session",
+						"value": "{{sessionKey}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Get translations from location identifiers to displayable text.\n\nParameters:\n\nagencyid: ISIL of the agency (e.g. DK-761500) \n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Library - getSublocations",
+			"request": {
+				"url": "{{host}}{{agencyId}}/sublocations",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "X-session",
+						"value": "{{sessionKey}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Get translations from sub-location identifiers to displayable text.\n\nParameters:\n\nagencyid: ISIL of the agency (e.g. DK-761500) \n\n"
+			},
+			"response": []
+		}
+	]
+}
