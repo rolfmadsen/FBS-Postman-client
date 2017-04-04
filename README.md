@@ -71,11 +71,11 @@ sessionKey:
 patronId:
 ```
 7. Udskift de dele af teksten der er markeret med \*'ner med følgende oplysninger 
-..* "agencyId:DK-" efter "DK-" tilføjes biblioteksnummer (ISIL/agency)
-..* "username:" Brugernavnet til FBS kan findes i DDB CMS under /admin/config/ding/provider/fbs
-..* "password:" Password til FBS kan findes i DDB CMS under /admin/config/ding/provider/fbs
-..* "libraryCardNumber:" CPR-nummer eller Biblioteksnummer for den bruger der skal laves opslag på i FBS
-..* "pincode:" Pin-kode for den bruger der skal laves opslag på i FBS
+  * "agencyId:DK-" efter "DK-" tilføjes biblioteksnummer (ISIL/agency)
+  * "username:" Brugernavnet til FBS kan findes i DDB CMS under /admin/config/ding/provider/fbs
+  * "password:" Password til FBS kan findes i DDB CMS under /admin/config/ding/provider/fbs
+  * "libraryCardNumber:" CPR-nummer eller Biblioteksnummer for den bruger der skal laves opslag på i FBS
+  * "pincode:" Pin-kode for den bruger der skal laves opslag på i FBS
 
 ### sessionKey og patronId
 
