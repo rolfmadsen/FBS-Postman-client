@@ -5,6 +5,7 @@
 API'et kan ikke tilgås fra en browser, og der findes ikke en web klient, som vi er vant til med nogle af de andre API'er vi benytter i folkebibliotekssektoren.
 
 Hensigten med dette Github repository er at:
+* Give biblioteksmedarbejdere mulighed for at se de data FBS API'et uden det forudsætter programmeringskompetencer.
 * Dele en Postman collection bestående af et antal foruddefinerede forespørgsler til FBS.
 * Beskrive hvordan man installerer postman.
 * Beskrive hvordan man importerer FBS Postman collectionen.
