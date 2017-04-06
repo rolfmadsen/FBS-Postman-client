@@ -32,7 +32,7 @@ FBS Postman collection giver mulighed for at hente følgende oplysninger fra FBS
 
 Postman er gratis værktøj med en grafisk brugergrænseflade, der kan installeres på Windows, Mac og Linux computere, og den egner sig derfor godt til brugere, som undertegnede, der ikke færdes hjemmevant i en kommandoprompt og ikke kan programmere op imod et API.
 
-Postman kan downloades fra https://www.getpostman.com/ og installeres som ethvert andet program, og det forudsætter derfor også administratorrettigheder at installere.
+Postman kan downloades fra https://www.getpostman.com/ og installeres som ethvert andet program.
 
 ## Importér FBS.postman_collection
 
